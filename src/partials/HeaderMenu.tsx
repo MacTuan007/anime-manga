@@ -29,8 +29,6 @@ export default function HeaderMenu({ theLoaiList }: Props) {
         <div className="hamburger mobile" onClick={() => setIsMenuOpen(!isMenuOpen)}>☰</div>
 
         <div className={`menu-items ${isMenuOpen ? "open" : ""}`}>
-          <button className="menu-item" onClick={() => navigate("/")}>Trang Chủ</button>
-
           <div
             className="menu-item"
             onMouseEnter={() => setShowDropdown(true)}

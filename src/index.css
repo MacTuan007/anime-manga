@@ -693,3 +693,38 @@ button:focus-visible {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+  .list-group {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .list-group-item {
+    flex: 1 0 auto;
+    text-align: center;
+  }
+}
+/* loginHeader.css */
+
+.login-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 999;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-header .logo {
+    height: 40px;
+    cursor: pointer;
+}
+
+.form-login {
+    padding-top: 80px; /* để tránh bị che bởi header */
+}

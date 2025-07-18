@@ -78,40 +78,59 @@ export default function TruyenMoi() {
   };
 
   return (
-    <div className="truyen-moi-container">
-      <h2 className="section-title">Truyện Mới Cập Nhật</h2>
-      <div className="truyen-grid">
+    <div className="container my-4">
+      <h2 className="text-center mb-4">Truyện Mới Cập Nhật</h2>
+
+      <div className="row g-4">
         {currentData.map((truyen) => (
-          <div
-            key={truyen.id}
-            className="truyen-card"
-            onClick={() => navigate(`/chi-tiet/${truyen.id}`)}
-          >
-            <img
-              src={truyen.thumbnail}
-              alt={truyen.ten}
-              className="truyen-img"
-            />
-            <div className="truyen-ten">{truyen.ten}</div>
-            <div className="chuong-moi">Chương {truyen.chuongMoiNhat}</div>
+          <div key={truyen.id} className="col-6 col-md-3">
+            <div
+              className="card h-100 shadow-sm border-0 hover-shadow cursor-pointer"
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate(`/chi-tiet/${truyen.id}`)}
+            >
+              <img
+                src={truyen.thumbnail}
+                className="card-img-top"
+                alt={truyen.ten}
+                style={{ height: "250px", objectFit: "cover" }}
+              />
+              <div className="card-body p-2">
+                <h6 className="card-title text-truncate" title={truyen.ten}>
+                  {truyen.ten}
+                </h6>
+                <p className="card-text text-muted small">
+                  Chương {truyen.chuongMoiNhat}
+                </p>
+              </div>
+            </div>
           </div>
         ))}
       </div>
 
-      <div className="pagination">
-        <button onClick={() => goToPage(1)} disabled={currentPage === 1}>Đầu</button>
-        {renderPageNumbers().map((page, idx) => (
-          <button
-            key={idx}
-            onClick={() => typeof page === "number" && goToPage(page)}
-            className={currentPage === page ? "active" : ""}
-            disabled={page === "..."}
-          >
-            {page}
-          </button>
-        ))}
-        <button onClick={() => goToPage(totalPages)} disabled={currentPage === totalPages}>Cuối</button>
-      </div>
+      <nav className="d-flex justify-content-center mt-4">
+        <ul className="pagination">
+          <li className={`page-item ${currentPage === 1 && "disabled"}`}>
+            <button className="page-link" onClick={() => goToPage(1)}>Đầu</button>
+          </li>
+          {renderPageNumbers().map((page, idx) => (
+            <li
+              key={idx}
+              className={`page-item ${currentPage === page ? "active" : ""} ${page === "..." ? "disabled" : ""}`}
+            >
+              <button
+                className="page-link"
+                onClick={() => typeof page === "number" && goToPage(page)}
+              >
+                {page}
+              </button>
+            </li>
+          ))}
+          <li className={`page-item ${currentPage === totalPages && "disabled"}`}>
+            <button className="page-link" onClick={() => goToPage(totalPages)}>Cuối</button>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 }

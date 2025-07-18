@@ -22,6 +22,7 @@ export default function LoginRegister() {
         email: '',
         password: '',
         dateoff: 0,
+        ho: '',
         tacgia: 0,
         ten: '',
         vip: 0,
@@ -49,6 +50,10 @@ export default function LoginRegister() {
         setPasswordMatchError(value !== userdk.password ? 'Mật khẩu nhập lại không khớp!' : '');
     };
 
+    const isValidName = (value: string): boolean => /^[a-zA-ZÀ-ỹ\s]+$/.test(value);
+    const isValidEmail = (email: string): boolean =>
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
     const handleSubmitdn = async (e: React.FormEvent) => {
         e.preventDefault();
         setErrorDN('');
@@ -65,9 +70,7 @@ export default function LoginRegister() {
             const khachhang = Object.values(data)[0] as any;
             const isMatch = await bcrypt.compare(userdn.password, khachhang.password);
             if (isMatch) {
-                const emailKey = khachhang.email.replace(/[^a-zA-Z0-9]/g, '');
                 localStorage.setItem('email', khachhang.email);
-                localStorage.setItem('emailKey', emailKey);
                 navigate('/');
             } else {
                 setErrorDN("Mật khẩu không đúng!");
@@ -87,11 +90,19 @@ export default function LoginRegister() {
                 return;
             }
         }
-
-        if (userdk.ten.length < 2) {
+        if (userdk.ho.length < 2 || userdk.ten.length < 2) {
             setErrorDK('Họ và tên phải có ít nhất 2 ký tự!');
             return;
         }
+        if (!isValidName(userdk.ho) || !isValidName(userdk.ten)) {
+            setErrorDK('Họ và tên chỉ được chứa chữ cái và khoảng trắng!');
+            return;
+        }
+        if (!isValidEmail(userdk.email)) {
+            setErrorDK('Email không hợp lệ!');
+            return;
+        }
+
         if (userdk.password.length < 6) {
             setErrorDK('Mật khẩu phải có ít nhất 6 ký tự!');
             return;
@@ -128,6 +139,7 @@ export default function LoginRegister() {
             email: '',
             password: '',
             dateoff: 0,
+            ho: '',
             tacgia: 0,
             ten: '',
             vip: 0,
@@ -138,74 +150,86 @@ export default function LoginRegister() {
     };
 
     return (
-        <div className='form-login'>
-            <div className={`container ${isSignUp ? 'active' : ''}`}>
-                <div className="form-container sign-up">
-                    <form onSubmit={handleSubmitdk}>
-                        <h1>Đăng ký</h1>
-                        <input type="text" placeholder="Họ và tên" id="ten" value={userdk.ten} onChange={handleChangedk} />
-                        <input type="email" placeholder="Email" id="email" value={userdk.email} onChange={handleChangedk} />
-                        <input type="password" placeholder="Mật khẩu" id="password" value={userdk.password} onChange={handleChangedk} />
-                        <input type="password" placeholder="Nhập lại mật khẩu" value={password2} onChange={handlePassword2Change} />
-                        {(passwordMatchError || errorDK) && (
-                            <p className="text-danger">{passwordMatchError || errorDK}</p>
-                        )}
-                        <button type="submit">Đăng ký</button>
-                    </form>
-                </div>
+        <>
+            <header className="login-header">
+                <img
+                    src="/logo.png"
+                    alt="Logo"
+                    className="logo"
+                    onClick={() => navigate('/')}
+                />
+            </header>
 
-                <div className="form-container sign-in">
-                    <form onSubmit={handleSubmitdn}>
-                        <h1>Đăng nhập</h1>
-                        <input
-                            type="text"
-                            id="email"
-                            value={userdn.email}
-                            onChange={handleChangedn}
-                            autoComplete="email"
-                            placeholder="Nhập email"
-                        />
-                        <input
-                            type="password"
-                            id="password"
-                            value={userdn.password}
-                            onChange={handleChangedn}
-                            autoComplete="current-password"
-                            placeholder="Nhập mật khẩu"
-                        />
-                        {errorDN && <p className="text-danger">{errorDN}</p>}
-                        <div className="buttonWrapper">
-                            <button type="submit">Đăng nhập</button>
-                        </div>
-                    </form>
-                </div>
+            <div className='form-login'>
+                <div className={`container ${isSignUp ? 'active' : ''}`}>
+                    <div className="form-container sign-up">
+                        <form onSubmit={handleSubmitdk}>
+                            <h1>Đăng ký</h1>
+                            <input type="text" placeholder="Nhập họ" id="ho" value={userdk.ho} onChange={handleChangedk} />
+                            <input type="text" placeholder="Nhập tên" id="ten" value={userdk.ten} onChange={handleChangedk} />
+                            <input type="email" placeholder="Email" id="email" value={userdk.email} onChange={handleChangedk} />
+                            <input type="password" placeholder="Mật khẩu" id="password" value={userdk.password} onChange={handleChangedk} />
+                            <input type="password" placeholder="Nhập lại mật khẩu" value={password2} onChange={handlePassword2Change} />
+                            {(passwordMatchError || errorDK) && (
+                                <p className="text-danger">{passwordMatchError || errorDK}</p>
+                            )}
+                            <button type="submit">Đăng ký</button>
+                        </form>
+                    </div>
 
-                <div className="toggle-container">
-                    <div className="toggle">
-                        <div className="toggle-panel toggle-left">
-                            <h1>Welcome Back!</h1>
-                            <img className="rounded-image" src="/logo.png" alt="BIIC" />
-                            <button
-                                className="hidden"
-                                type="button"
-                                onClick={() => setIsSignUp(false)}
-                            >
-                                Đăng nhập
-                            </button>
-                        </div>
-                        <div className="toggle-panel toggle-right">
-                            <img className="rounded-image" src="/logo.png" alt="BIIC" />
-                            <button
-                                className="hidden"
-                                type="button"
-                                onClick={() => setIsSignUp(true)}
-                            >
-                                Đăng ký
-                            </button>
+                    <div className="form-container sign-in">
+                        <form onSubmit={handleSubmitdn}>
+                            <h1>Đăng nhập</h1>
+                            <input
+                                type="text"
+                                id="email"
+                                value={userdn.email}
+                                onChange={handleChangedn}
+                                autoComplete="email"
+                                placeholder="Nhập email"
+                            />
+                            <input
+                                type="password"
+                                id="password"
+                                value={userdn.password}
+                                onChange={handleChangedn}
+                                autoComplete="current-password"
+                                placeholder="Nhập mật khẩu"
+                            />
+                            {errorDN && <p className="text-danger">{errorDN}</p>}
+                            <div className="buttonWrapper">
+                                <button type="submit">Đăng nhập</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div className="toggle-container">
+                        <div className="toggle">
+                            <div className="toggle-panel toggle-left">
+                                <h1>Welcome Back!</h1>
+                                <img className="rounded-image" src="/logo.png" alt="BIIC" />
+                                <button
+                                    className="hidden"
+                                    type="button"
+                                    onClick={() => setIsSignUp(false)}
+                                >
+                                    Đăng nhập
+                                </button>
+                            </div>
+                            <div className="toggle-panel toggle-right">
+                                <img className="rounded-image" src="/logo.png" alt="BIIC" />
+                                <button
+                                    className="hidden"
+                                    type="button"
+                                    onClick={() => setIsSignUp(true)}
+                                >
+                                    Đăng ký
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }

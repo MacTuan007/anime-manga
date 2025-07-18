@@ -5,6 +5,7 @@ export interface UserWithUsername {
 
 export interface User extends UserWithUsername {
     dateoff: number;
+    ho: string;
     tacgia: number;
     ten: string;
     vip: number
