@@ -1,11 +1,9 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function SlideBar() {
-    const navigate = useNavigate();
 
     const logout = () => {
         localStorage.removeItem("email");
-        navigate("/");
     };
 
     const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -28,7 +26,7 @@ export default function SlideBar() {
             <NavLink to="/lich-su-giao-dich" className={linkClass}>
                 Lịch sử giao dịch
             </NavLink>
-            <NavLink to="/lich-su-giao-dich" className={linkClass} onClick={logout}>
+            <NavLink to="/" className={linkClass} onClick={logout}>
                 Đăng xuất
             </NavLink>
         </div>

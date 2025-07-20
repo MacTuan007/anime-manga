@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { Tags } from '../interfaces/Tag';
+import type { Tag } from '../interfaces/Tag';
 
 interface Props {
-  theLoaiList: Tags[];
+  theLoaiList: Tag[];
 }
 
 export default function HeaderMenu({ theLoaiList }: Props) {

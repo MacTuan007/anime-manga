@@ -71,6 +71,8 @@ export default function LoginRegister() {
             const isMatch = await bcrypt.compare(userdn.password, khachhang.password);
             if (isMatch) {
                 localStorage.setItem('email', khachhang.email);
+                const emailkey = khachhang.email.replace(/[^a-zA-Z0-9]/g, '');
+                localStorage.setItem('emailkey', emailkey);
                 navigate('/');
             } else {
                 setErrorDN("Mật khẩu không đúng!");

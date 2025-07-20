@@ -5,6 +5,7 @@ import Account from './layouts/Account';
 import ChangePassword from './layouts/ChangePassword';
 import UpdateVip from './layouts/UpdateVip';
 import Success from './layouts/Success';
+
 export default function App() {
   return (
     <BrowserRouter>

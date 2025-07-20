@@ -21,7 +21,7 @@ export default function UpdateVip() {
         {
             title: "VIP 1 Năm",
             price: "299.000đ",
-            desc: "Truy cập không giới hạn trong 365 ngày.",
+            desc: "Truy cập không giới hạn trong 1 năm.",
             amount: 299000,
             duration: 365,
         },

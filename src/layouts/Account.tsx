@@ -19,6 +19,7 @@ export default function Account() {
   const [ten, setTen] = useState("");
   const [chucVu, setChucVu] = useState(""); // "0" hoặc "1"
   const [userKey, setUserKey] = useState("");
+  const [dateoff, setDateoff] = useState("");
 
   const [hoError, setHoError] = useState("");
   const [tenError, setTenError] = useState("");
@@ -47,6 +48,7 @@ export default function Account() {
           setHo(user.ho || "");
           setTen(user.ten || "");
           setChucVu(user.tacgia?.toString() || "0");
+          setDateoff(user.dateoff || "");
         }
       });
     }
@@ -86,6 +88,13 @@ export default function Account() {
       console.error("Lỗi cập nhật:", error);
       alert("Cập nhật thất bại!");
     }
+  };
+
+  // ✅ Format ngày từ YYYY-MM-DD → DD/MM/YYYY
+  const getFormattedDate = (dateStr: string) => {
+    if (!dateStr) return "Bạn chưa phải thành viên VIP";
+    const [year, month, day] = dateStr.split("-");
+    return `${day}/${month}/${year}`;
   };
 
   return (
@@ -136,6 +145,16 @@ export default function Account() {
                     type="text"
                     className="form-control"
                     value={chucVu === "1" ? "Tác giả" : "Người đọc"}
+                    readOnly
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Ngày hết hạn VIP</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={getFormattedDate(dateoff)}
                     readOnly
                   />
                 </div>

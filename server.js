@@ -63,11 +63,17 @@ app.post('/api/create_payment', async (req, res) => {
 });
 
 app.get('/api/payment-result', (req, res) => {
-  const responseCode = req.query.vnp_ResponseCode;
+  const { vnp_Amount, vnp_TransactionNo, vnp_ResponseCode, vnp_PayDate } = req.query;
 
-  if (responseCode === '00') {
+  if (vnp_ResponseCode === '00') {
     // Thành công
-    res.redirect('/success');
+    const params = new URLSearchParams({
+      amount: vnp_Amount,
+      transactionNo: vnp_TransactionNo,
+      payDate: vnp_PayDate,
+    });
+
+    return res.redirect(`/success?${params.toString()}`);
   } else {
     // Thất bại
     res.redirect('/failure');
