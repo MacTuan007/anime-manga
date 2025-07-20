@@ -43,7 +43,6 @@ export default function TruyenDetailPage() {
             const data = snap.val() as TruyenDetail;
             setTruyen(data);
 
-            // Lấy tag
             get(ref(db, "tags")).then((tagsSnap) => {
                 const tagsData = tagsSnap.val() || {};
                 const resolvedTags = Object.keys(data.listtag || {}).map(
@@ -52,7 +51,6 @@ export default function TruyenDetailPage() {
                 setTags(resolvedTags);
             });
 
-            // Lấy chương
             const now = Date.now();
             const rawChuong = data.chuong || {};
             const danhSachChuong = Object.entries(rawChuong)
@@ -139,19 +137,19 @@ export default function TruyenDetailPage() {
     if (!truyen) return <div className="text-center mt-4 text-danger">Không tìm thấy truyện!</div>;
 
     return (
-        <><div className=""></div>
+        <><div className="position-fixed top-0 start-0 w-100 z-3 bg-white shadow" style={{ height: "60px" }}></div>
             <Header />
             <HeaderMenu theLoaiList={theLoaiList} />
             <div className="container mt-4 text-dark">
                 <div className="row">
-                    <div className="col-md-3 text-center">
+                    <div className="col-md-3 col-12 text-center mb-3">
                         <img
                             src={truyen.thumbnail}
                             alt={truyen.ten}
-                            className="img-fluid rounded shadow"
+                            className="img-fluid rounded shadow w-100"
                         />
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-9 col-12">
                         <h3>{truyen.ten}</h3>
                         <p><strong>Tác giả:</strong> {truyen.tacgia || "Đang Cập Nhật"}</p>
                         <p><strong>Tình trạng:</strong> {truyen.trangthai === 1 ? "Đang Cập Nhật" : "Đã Hoàn Thành"}</p>
@@ -171,13 +169,13 @@ export default function TruyenDetailPage() {
                             ))}
                         </div>
 
-                        <button onClick={handleReadFirst} className="btn btn-success me-2">
+                        <button onClick={handleReadFirst} className="btn btn-success me-2 mb-2">
                             📖 Đọc từ đầu
                         </button>
-                        <button onClick={handleFollow} className="btn btn-danger me-2">
+                        <button onClick={handleFollow} className="btn btn-danger me-2 mb-2">
                             {isFollowed ? "💔 Bỏ theo dõi" : "❤️ Theo dõi"}
                         </button>
-                        <button onClick={handleLike} className="btn btn-primary">
+                        <button onClick={handleLike} className="btn btn-primary mb-2">
                             {isLiked ? "👎 Bỏ thích" : "👍 Thích"}
                         </button>
                     </div>

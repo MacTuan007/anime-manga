@@ -55,6 +55,13 @@ export default function Header() {
     setShowMobileSearch(false);
   };
 
+  const handleSearchSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && searchTerm.trim() !== '') {
+      navigate(`/tim-kiem?tu=${encodeURIComponent(searchTerm.trim())}`);
+      setShowMobileSearch(false);
+    }
+  };
+
   return (
     <header className="header" style={{ position: 'relative', zIndex: 1050 }}>
       <div className="header-top d-flex justify-content-between align-items-center px-3 py-2">
@@ -67,25 +74,30 @@ export default function Header() {
             onClick={() => navigate('/')}
           />
 
-          <div className="search-container position-relative d-none d-md-block"
-            style={{ width: 300 }}>
+          <div
+            className="search-container position-relative d-none d-md-block"
+            style={{ width: 300 }}
+          >
             <input
               type="text"
               placeholder="Tìm kiếm..."
               className="form-control"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={handleSearchSubmit}
             />
             {searchResults.length > 0 && (
-              <ul className="search-results list-group position-absolute w-100"
+              <ul
+                className="search-results list-group position-absolute w-100"
                 style={{
                   top: '100%',
-                  zIndex: 1060, // cao hơn header menu
+                  zIndex: 1060,
                   background: 'white',
                   boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                   maxHeight: '300px',
-                  overflowY: 'auto'
-                }}>
+                  overflowY: 'auto',
+                }}
+              >
                 {searchResults.map((item) => (
                   <li
                     key={item.id}
@@ -137,6 +149,7 @@ export default function Header() {
             className="form-control"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={handleSearchSubmit}
           />
           {searchResults.length > 0 && (
             <ul className="search-results list-group mt-1">

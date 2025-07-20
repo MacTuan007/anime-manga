@@ -118,9 +118,9 @@ export default function ChuongDetailPage() {
             <HeaderMenu theLoaiList={theLoaiList} />
             <div className={`position-fixed top-0 start-0 w-100 bg-dark d-flex justify-content-center align-items-center py-2 gap-3 shadow-sm text-white z-3 nav-chuong ${isVisible ? "show" : "hide"}`} style={{ height: "48px", zIndex: 1000 }}>
                 <Link to="/" className="text-white text-decoration-none fs-5">🏠</Link>
-                <button className="btn btn-link text-white fs-5 p-0" onClick={() => prev && navigate(`/chuong-chi-tiet/${idtruyen}-${prev}`)} disabled={!prev}>◀</button>
+                <button className="btn btn-link text-white fs-5 p-0" onClick={() => prev && navigate(`/chuong-chi-tiet/${idtruyen}/${prev}`)} disabled={!prev}>◀</button>
                 <span className="fw-semibold">Chương {sochuong}</span>
-                <button className="btn btn-link text-white fs-5 p-0" onClick={() => next && navigate(`/chuong-chi-tiet/${idtruyen}-${next}`)} disabled={!next}>▶</button>
+                <button className="btn btn-link text-white fs-5 p-0" onClick={() => next && navigate(`/chuong-chi-tiet/${idtruyen}/${next}`)} disabled={!next}>▶</button>
                 <button className={`btn btn-sm ${isTheoDoi ? "btn-success" : "btn-light"}`} onClick={handleTheoDoi}>
                     {isTheoDoi ? "💚 Đã theo dõi" : "🤍 Theo dõi"}
                 </button>
@@ -134,8 +134,8 @@ export default function ChuongDetailPage() {
                 <p className="text-muted mb-3 fs-6"><strong>Ngày đăng:</strong> {ngayDang}</p>
 
                 <div className="d-flex justify-content-between my-3">
-                    <button className="btn btn-outline-primary" disabled={!prev} onClick={() => prev && navigate(`/chuong-chi-tiet/${idtruyen}-${prev}`)}>⬅ Chương trước</button>
-                    <button className="btn btn-outline-primary" disabled={!next} onClick={() => next && navigate(`/chuong-chi-tiet/${idtruyen}-${next}`)}>Chương sau ➡</button>
+                    <button className="btn btn-outline-primary" disabled={!prev} onClick={() => prev && navigate(`/chuong-chi-tiet/${idtruyen}/${prev}`)}>⬅ Chương trước</button>
+                    <button className="btn btn-outline-primary" disabled={!next} onClick={() => next && navigate(`/chuong-chi-tiet/${idtruyen}/${next}`)}>Chương sau ➡</button>
                 </div>
 
                 <div className="d-flex flex-column align-items-center">
@@ -145,8 +145,8 @@ export default function ChuongDetailPage() {
                 </div>
 
                 <div className="d-flex justify-content-between my-3">
-                    <button className="btn btn-outline-primary" disabled={!prev} onClick={() => prev && navigate(`/chuong-chi-tiet/${idtruyen}-${prev}`)}>⬅ Chương trước</button>
-                    <button className="btn btn-outline-primary" disabled={!next} onClick={() => next && navigate(`/chuong-chi-tiet/${idtruyen}-${next}`)}>Chương sau ➡</button>
+                    <button className="btn btn-outline-primary" disabled={!prev} onClick={() => prev && navigate(`/chuong-chi-tiet/${idtruyen}/${prev}`)}>⬅ Chương trước</button>
+                    <button className="btn btn-outline-primary" disabled={!next} onClick={() => next && navigate(`/chuong-chi-tiet/${idtruyen}/${next}`)}>Chương sau ➡</button>
                 </div>
             </div>
 

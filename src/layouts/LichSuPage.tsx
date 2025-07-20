@@ -75,7 +75,7 @@ export default function LichSuPage() {
                                     className="card h-100 shadow-sm border-0"
                                     style={{ cursor: "pointer" }}
                                     onClick={() =>
-                                        navigate(`/chuong-chi-tiet/${item.id}-${item.chuong}`)
+                                        navigate(`/chuong-chi-tiet/${item.id}/${item.chuong}`)
                                     }
                                 >
                                     <img
