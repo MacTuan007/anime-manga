@@ -738,3 +738,31 @@ button:focus-visible {
 .nav-chuong.show {
   transform: translateY(0);
 }
+
+.search-container {
+  position: relative;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ddd;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-results li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.search-results li:hover {
+  background-color: #f0f0f0;
+}
