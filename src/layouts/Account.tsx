@@ -10,8 +10,10 @@ import {
   get,
   update,
 } from "firebase/database";
+import { useNavigate } from "react-router-dom";
 
 export default function Account() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [ho, setHo] = useState("");
   const [ten, setTen] = useState("");
@@ -23,6 +25,10 @@ export default function Account() {
 
   useEffect(() => {
     const emailLS = localStorage.getItem("email");
+    if (emailLS === null) {
+      navigate("/");
+      return;
+    }
     if (emailLS) {
       setEmail(emailLS);
       const userRef = query(

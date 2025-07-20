@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function SlideBar() {
     const navigate = useNavigate();
@@ -8,23 +8,29 @@ export default function SlideBar() {
         navigate("/");
     };
 
+    const linkClass = ({ isActive }: { isActive: boolean }) =>
+        `list-group-item list-group-item-action ${isActive ? "active" : ""}`;
+
     return (
-        <div className="list-group shadow-sm">
-            <button className="list-group-item list-group-item-action active" onClick={() => navigate("/tai-khoan")}>
+        <div className="list-group shadow-sm d-grid gap-2">
+            <NavLink to="/tai-khoan" className={linkClass}>
                 Quản lý tài khoản
-            </button>
-            <button className="list-group-item list-group-item-action" onClick={() => navigate("/doi-mat-khau")}>
+            </NavLink>
+            <NavLink to="/doi-mat-khau" className={linkClass}>
                 Đổi mật khẩu
-            </button>
-            <button className="list-group-item list-group-item-action" onClick={() => navigate("/dang-ky-tac-gia")}>
+            </NavLink>
+            <NavLink to="/dang-ky-tac-gia" className={linkClass}>
                 Đăng ký tác giả
-            </button>
-            <button className="list-group-item list-group-item-action" onClick={() => navigate("/nang-cap-vip")}>
+            </NavLink>
+            <NavLink to="/nang-cap-vip" className={linkClass}>
                 Nâng cấp VIP
-            </button>
-            <button className="list-group-item list-group-item-action" onClick={logout}>
+            </NavLink>
+            <NavLink to="/lich-su-giao-dich" className={linkClass}>
+                Lịch sử giao dịch
+            </NavLink>
+            <NavLink to="/lich-su-giao-dich" className={linkClass} onClick={logout}>
                 Đăng xuất
-            </button>
+            </NavLink>
         </div>
     );
 }
