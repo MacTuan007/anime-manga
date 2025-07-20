@@ -728,3 +728,13 @@ button:focus-visible {
 .form-login {
     padding-top: 80px; /* để tránh bị che bởi header */
 }
+
+.nav-chuong {
+  transition: transform 0.3s ease;
+}
+.nav-chuong.hide {
+  transform: translateY(-100%);
+}
+.nav-chuong.show {
+  transform: translateY(0);
+}

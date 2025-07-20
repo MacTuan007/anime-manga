@@ -7,6 +7,9 @@ import UpdateVip from './layouts/UpdateVip';
 import Success from './layouts/Success';
 import HistoryBill from './layouts/HistoryBill';
 import Failure from './layouts/Failure';
+import TheLoai from './layouts/TheLoai';
+import TruyenDetailPage from './layouts/TruyenDetail';
+import ChuongDetailPage from './layouts/ChuongDetail';
 
 export default function App() {
   return (
@@ -20,6 +23,10 @@ export default function App() {
         <Route path="/Success" element={<Success />} />
         <Route path="/Failure" element={<Failure />} />
         <Route path="/lich-su-giao-dich" element={<HistoryBill />} />
+        <Route path="/the-loai/:tag" element={<TheLoai />} />
+        <Route path="chi-tiet/:idtruyen" element={<TruyenDetailPage />} />
+        <Route path="/chuong-chi-tiet/:idtruyen/:sochuong" element={<ChuongDetailPage />} />
+
       </Routes>
     </BrowserRouter>
   );

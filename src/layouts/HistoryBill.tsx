@@ -9,6 +9,7 @@ import {
   equalTo,
   get,
 } from "firebase/database";
+import formatDate from "../utils/formatDate";
 
 interface Bill {
   email: string;
@@ -92,18 +93,4 @@ export default function HistoryBill() {
       </div>
     </>
   );
-}
-
-// ✅ Chuyển dạng 20250720 thành 20/07/2025
-function formatDate(raw: string): string {
-  if (raw.length !== 14) return raw;
-
-  const year = raw.substring(0, 4);
-  const month = raw.substring(4, 6);
-  const day = raw.substring(6, 8);
-  const hour = raw.substring(8, 10);
-  const minute = raw.substring(10, 12);
-  const second = raw.substring(12, 14);
-
-  return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
 }
