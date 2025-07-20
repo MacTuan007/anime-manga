@@ -6,6 +6,7 @@ import type { Truyen } from "../interfaces/Truyen";
 import Header from "../partials/Header";
 import useTheLoaiList from "../utils/theloaiList";
 import HeaderMenu from "../partials/HeaderMenu";
+import Footer from "../partials/Footer";
 
 const ITEMS_PER_PAGE = 16;
 
@@ -160,6 +161,7 @@ export default function TheoDoiPage() {
                     </>
                 )}
             </div>
+            <Footer />
         </>
     );
 }

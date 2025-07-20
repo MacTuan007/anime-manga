@@ -9,6 +9,7 @@ import type { Tag } from "../interfaces/Tag";
 import useTheLoaiList from "../utils/theloaiList";
 import HeaderMenu from "../partials/HeaderMenu";
 import CommentSection from "../component/CommentSection";
+import Footer from "../partials/Footer";
 
 function parseCustomDate(dateStr: string): number {
     const year = parseInt(dateStr.slice(0, 4));
@@ -221,6 +222,7 @@ export default function TruyenDetailPage() {
                 <hr className="my-4" />
                 <CommentSection idtruyen={id} />
             </div>
+            <Footer />
         </>
     );
 }

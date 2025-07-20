@@ -11,6 +11,7 @@ import {
   update,
 } from "firebase/database";
 import { useNavigate } from "react-router-dom";
+import Footer from "../partials/Footer";
 
 export default function Account() {
   const navigate = useNavigate();
@@ -167,6 +168,7 @@ export default function Account() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

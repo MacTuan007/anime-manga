@@ -51,7 +51,7 @@ export default function UpdateVip() {
                         <SlideBar />
                     </div>
 
-                    <div className="col-md-9" style={{ minHeight: "400px" }}>
+                    <div className="col-md-9 p-3" style={{ minHeight: "400px" }}>
                         <div className="card shadow-sm">
                             <div className="card-header bg-dark text-white">Các gói VIP</div>
                             <div className="card-body">

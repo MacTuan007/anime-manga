@@ -6,6 +6,7 @@ import type { Truyen } from "../interfaces/Truyen";
 import Header from "../partials/Header";
 import HeaderMenu from "../partials/HeaderMenu";
 import type { Tag } from "../interfaces/Tag";
+import Footer from "../partials/Footer";
 
 const ITEMS_PER_PAGE = 16;
 
@@ -197,6 +198,7 @@ export default function TheLoai() {
                     </>
                 )}
             </div>
+            <Footer />
         </>
     );
 }

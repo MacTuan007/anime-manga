@@ -11,6 +11,7 @@ import {
     equalTo
 } from "firebase/database";
 import type { Bill } from "../interfaces/Bill";
+import Footer from "../partials/Footer";
 
 export default function Success() {
     const navigate = useNavigate();
@@ -102,6 +103,7 @@ export default function Success() {
                     ✅ Thanh toán thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.
                 </div>
             </div>
+            <Footer />
         </>
     );
 }

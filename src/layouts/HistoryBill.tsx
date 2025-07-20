@@ -10,6 +10,7 @@ import {
   get,
 } from "firebase/database";
 import formatDate from "../utils/formatDate";
+import Footer from "../partials/Footer";
 
 interface Bill {
   email: string;
@@ -91,6 +92,7 @@ export default function HistoryBill() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

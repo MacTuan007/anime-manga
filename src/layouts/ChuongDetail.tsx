@@ -7,6 +7,7 @@ import Header from "../partials/Header";
 import useTheLoaiList from "../utils/theloaiList";
 import HeaderMenu from "../partials/HeaderMenu";
 import CommentSection from "../component/CommentSection";
+import Footer from "../partials/Footer";
 
 export default function ChuongDetailPage() {
     const { idtruyen, sochuong } = useParams();
@@ -159,6 +160,7 @@ export default function ChuongDetailPage() {
                 </button>
             )}
             <CommentSection idtruyen={id} idchuong={chuong}/>
+            <Footer />
         </>
     );
 }

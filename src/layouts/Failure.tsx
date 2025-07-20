@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Footer from "../partials/Footer";
 
 
 export default function Failure() {
@@ -18,6 +19,7 @@ export default function Failure() {
                     Đã xảy ra lỗi trong quá trình xử lý yêu cầu của bạn. Vui lòng thử lại sau.
                 </div>
             </div>
+            <Footer />
         </>
     );
 }

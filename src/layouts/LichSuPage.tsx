@@ -6,6 +6,7 @@ import formatDate from "../utils/formatDate";
 import Header from "../partials/Header";
 import useTheLoaiList from "../utils/theloaiList";
 import HeaderMenu from "../partials/HeaderMenu";
+import Footer from "../partials/Footer";
 
 interface LichSuXem {
     id: string;
@@ -63,7 +64,7 @@ export default function LichSuPage() {
         <>
             <Header />
             <HeaderMenu theLoaiList={theLoaiList} />
-            <div className="container my-4">
+            <div className="container my-4 p-3">
                 <h2 className="text-center mb-4">Lịch Sử Đã Xem</h2>
                 {lichSu.length === 0 ? (
                     <p className="text-center">Bạn chưa xem truyện nào.</p>
@@ -101,6 +102,7 @@ export default function LichSuPage() {
                     </div>
                 )}
             </div>
+            <Footer />
         </>
     );
 }

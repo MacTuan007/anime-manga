@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import bcrypt from "bcryptjs";
 import { db } from "../firebase"; 
 import { ref, query, orderByChild, equalTo, get, update } from "firebase/database";
+import Footer from "../partials/Footer";
 
 export default function ChangePassword() {
     const [pass, setPass] = useState('');
@@ -90,7 +91,7 @@ export default function ChangePassword() {
                         <SlideBar />
                     </div>
 
-                    <div className="col-md-9">
+                    <div className="col-md-9 p-3">
                         <div className="card shadow-sm">
                             <div className="card-header bg-dark text-white">Thông Tin Tài Khoản</div>
                             <div className="card-body">
@@ -137,6 +138,7 @@ export default function ChangePassword() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
