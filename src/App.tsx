@@ -10,6 +10,8 @@ import Failure from './layouts/Failure';
 import TheLoai from './layouts/TheLoai';
 import TruyenDetailPage from './layouts/TruyenDetail';
 import ChuongDetailPage from './layouts/ChuongDetail';
+import TheoDoiPage from './layouts/TheoDoiPage';
+import LichSuPage from './layouts/LichSuPage';
 
 export default function App() {
   return (
@@ -26,6 +28,9 @@ export default function App() {
         <Route path="/the-loai/:tag" element={<TheLoai />} />
         <Route path="chi-tiet/:idtruyen" element={<TruyenDetailPage />} />
         <Route path="/chuong-chi-tiet/:idtruyen/:sochuong" element={<ChuongDetailPage />} />
+        <Route path="/theo-doi" element={<TheoDoiPage />} />
+        <Route path="/lich-su" element={<LichSuPage />} />
+
 
       </Routes>
     </BrowserRouter>
