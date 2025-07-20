@@ -8,6 +8,7 @@ import type { TruyenDetail } from "../interfaces/Truyen";
 import type { Tag } from "../interfaces/Tag";
 import useTheLoaiList from "../utils/theloaiList";
 import HeaderMenu from "../partials/HeaderMenu";
+import CommentSection from "../component/CommentSection";
 
 function parseCustomDate(dateStr: string): number {
     const year = parseInt(dateStr.slice(0, 4));
@@ -20,7 +21,8 @@ function parseCustomDate(dateStr: string): number {
 }
 
 export default function TruyenDetailPage() {
-    const { idtruyen } = useParams();
+    const { idtruyen } = useParams(); // ví dụ id = "abc123"
+    const id = idtruyen || ""; // fallback để không bị undefined
     const navigate = useNavigate();
     const [truyen, setTruyen] = useState<TruyenDetail | null>(null);
     const [tags, setTags] = useState<Tag[]>([]);
@@ -215,6 +217,9 @@ export default function TruyenDetailPage() {
                         ))}
                     </ul>
                 </div>
+
+                <hr className="my-4" />
+                <CommentSection idtruyen={id} />
             </div>
         </>
     );

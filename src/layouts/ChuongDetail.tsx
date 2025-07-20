@@ -6,9 +6,12 @@ import formatDate from "../utils/formatDate";
 import Header from "../partials/Header";
 import useTheLoaiList from "../utils/theloaiList";
 import HeaderMenu from "../partials/HeaderMenu";
+import CommentSection from "../component/CommentSection";
 
 export default function ChuongDetailPage() {
     const { idtruyen, sochuong } = useParams();
+    const id = idtruyen || "";
+    const chuong = sochuong || "";
     const [imageUrls, setImageUrls] = useState<string[]>([]);
     const [ngayDang, setNgayDang] = useState<string>("");
     const [dsChuong, setDsChuong] = useState<string[]>([]);
@@ -155,6 +158,7 @@ export default function ChuongDetailPage() {
                     ↑
                 </button>
             )}
+            <CommentSection idtruyen={id} idchuong={chuong}/>
         </>
     );
 }
