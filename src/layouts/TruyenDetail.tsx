@@ -40,7 +40,7 @@ export default function TruyenDetailPage() {
         if (!idtruyen) return;
 
         const truyenRef = ref(db, `truyen/${idtruyen}`);
-        const unsubscribe = onValue(truyenRef, (snap) => {
+        onValue(truyenRef, (snap) => {
             if (!snap.exists()) return;
             const data = snap.val() as TruyenDetail;
             setTruyen(data);

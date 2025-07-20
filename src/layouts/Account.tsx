@@ -108,7 +108,7 @@ export default function Account() {
           </div>
 
           {/* Form */}
-          <div className="col-md-9">
+          <div className="col-md-9 p-3">
             <div className="card shadow-sm">
               <div className="card-header bg-dark text-white">Thông Tin Tài Khoản</div>
               <div className="card-body">
