@@ -5,6 +5,8 @@ import Account from './layouts/Account';
 import ChangePassword from './layouts/ChangePassword';
 import UpdateVip from './layouts/UpdateVip';
 import Success from './layouts/Success';
+import HistoryBill from './layouts/HistoryBill';
+import Failure from './layouts/Failure';
 
 export default function App() {
   return (
@@ -16,7 +18,8 @@ export default function App() {
         <Route path="/doi-mat-khau" element={<ChangePassword />} />
         <Route path="/nang-cap-vip" element={<UpdateVip />} />
         <Route path="/Success" element={<Success />} />
-        <Route path="/Failure" element={<Success />} />
+        <Route path="/Failure" element={<Failure />} />
+        <Route path="/lich-su-giao-dich" element={<HistoryBill />} />
       </Routes>
     </BrowserRouter>
   );
