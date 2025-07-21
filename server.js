@@ -24,7 +24,7 @@ app.post('/api/create_payment', async (req, res) => {
   const tmnCode = "CFFD0BGK"; // Lấy từ VNPay .env
   const secretKey = "E5LTCMVQ0NADKODCFFVVX1MIG8UL5MMR"; // Lấy từ VNPay
 
-  const returnUrl = "http://localhost:5000/api/payment-result"; // Trang kết quả
+  const returnUrl = "https://anime-manga.onrender.com/api/payment-result"; // Trang kết quả
   const vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
   let ipAddr = req.ip;
   let orderId = moment().format("YYYYMMDDHHmmss");
